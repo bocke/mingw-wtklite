@@ -1,0 +1,10 @@
+syntax: glob
+**.[ado]
+configure
+config.log
+config.status
+autom4te.cache
+install-sh
+Makefile
+build
+tmp

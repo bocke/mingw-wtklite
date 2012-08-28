@@ -1,0 +1,145 @@
+# @configure_input@
+#
+# ---------------------------------------------------------------------------
+#
+PACKAGE = @PACKAGE_TARNAME@
+VERSION = @PACKAGE_VERSION@
+#
+# Implementation of a minimal C++ class framework for use with the
+# Microsoft Windows Application Programming Interface.
+#
+# $Id$
+#
+# Written by Keith Marshall <keithmarshall@users.sourceforge.net>
+# Copyright (C) 2012, MinGW.org Project.
+#
+# ---------------------------------------------------------------------------
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+# ---------------------------------------------------------------------------
+#
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+includedir = @includedir@
+libdir = @libdir@
+
+# Compiler identification; note that this is a C++ only project.
+#
+CXX = @CXX@
+CPPFLAGS = @CPPFLAGS@
+CXXFLAGS = @CXXFLAGS@
+OBJEXT = @OBJEXT@
+
+# Archive librarian identification.
+#
+AR = @AR@
+ARFLAGS = @ARFLAGS@
+
+all: libwtkplus.a
+
+# Default target is a statically linkable object library, comprising
+# the following object modules.
+#
+LIBWTK_OBJECTS = wtkbase.$(OBJEXT) wtkmain.$(OBJEXT) wndproc.$(OBJEXT) \
+  dlgproc.$(OBJEXT) wtkchild.$(OBJEXT) wtkexcept.$(OBJEXT) errtext.$(OBJEXT) \
+  sashctrl.$(OBJEXT) hsashctl.$(OBJEXT) vsashctl.$(OBJEXT) strres.$(OBJEXT)
+
+libwtkplus.a: $(LIBWTK_OBJECTS)
+	$(AR) $(ARFLAGS) $@ $^
+
+# Compilation and dependency tracking...
+#
+DEPFLAGS = -MM -MP -MD
+sinclude *.d
+
+# Implementations for horizontal and vertical sash bar controls are
+# compiled from common source, so need explicit build rules.
+#
+HSASH_IMPLEMENTATION = -D HSASH_IMPLEMENTATION ${srcdir}/sashctrl.cpp
+VSASH_IMPLEMENTATION = -D VSASH_IMPLEMENTATION ${srcdir}/sashctrl.cpp
+
+hsashctl.$(OBJEXT): sashctrl.cpp sashctrl.o
+	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) -o $@ $(HSASH_IMPLEMENTATION)
+
+vsashctl.$(OBJEXT): sashctrl.cpp sashctrl.o
+	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) -o $@ $(VSASH_IMPLEMENTATION)
+
+# Other object modules may be implicitly compiled.
+#
+%.$(OBJEXT): %.cpp
+	$(CXX) $(DEPFLAGS) $(CPPFLAGS) $(CXXFLAGS) $<
+	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) -o $@ $<
+
+# Installation rules.
+#
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+
+INSTALL_DATA = @INSTALL_DATA@
+
+install: install-dirs install-headers install-libs
+
+install-dirs:
+	$(MKDIR_P) ${includedir} ${libdir}
+
+install-headers: wtkplus.h wtkexcept.h
+	$(INSTALL_DATA) $^ ${includedir}
+
+install-libs: libwtkplus.a
+	$(INSTALL_DATA) $^ ${libdir}
+
+# Distribution rules.
+#
+TARNAME = $(PACKAGE)-$(VERSION)-mingw32
+SRCDIST_FILES = ChangeLog configure configure.ac Makefile.in install-sh \
+  wtkplus.h wtkexcept.h wtkbase.cpp wtkmain.cpp wtkchild.cpp wndproc.cpp \
+  dlgproc.cpp sashctrl.cpp wtkexcept.cpp errtext.cpp strres.cpp
+
+dist: srcdist devdist
+
+srcdist: $(SRCDIST_FILES)
+	rm -rf $(PACKAGE)-$(VERSION)
+	$(MKDIR_P) $(PACKAGE)-$(VERSION)
+	cp -p $^ $(PACKAGE)-$(VERSION)
+	tar cf - $(PACKAGE)-$(VERSION) | xz -c > $(TARNAME)-src.tar.xz
+	rm -rf $(PACKAGE)-$(VERSION)
+
+devdist:
+	rm -rf tmp
+	$(MAKE) --no-print-directory install prefix=`pwd`/tmp
+	cd tmp; tar cf - * | xz -c > ../$(TARNAME)-dev.tar.xz
+	rm -rf tmp
+
+# Standard clean-up rules.
+#
+clean:
+	rm -f *.$(OBJEXT) *.a
+
+distclean: clean
+	rm -f *.d config.* Makefile
+
+maintainer_clean realclean: distclean
+	rm -rf autom4te.cache
+	rm -f configure
+
+# $RCSfile$: end of file
