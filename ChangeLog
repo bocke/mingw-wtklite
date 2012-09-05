@@ -1,3 +1,11 @@
+2012-09-05  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
+	Licence wording enhancements.
+
+	* install-sh: Excepting this (which remains unchanged)...
+	* all source files: Explicitly note requirement to quote disclaimer in
+	all copies and substantial portions of the software.
+
 2012-08-28  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
 	New package.
