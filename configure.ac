@@ -1,6 +1,6 @@
 # configure.ac
 #
-  AC_INIT([wtk],[0.1.0],[http://mingw.org/Reporting_Bugs])
+  AC_INIT([wtklite],[0.1.0],[http://mingw.org/Reporting_Bugs])
 #
 # Implementation of a minimal C++ class framework for use with the
 # Microsoft Windows Application Programming Interface.

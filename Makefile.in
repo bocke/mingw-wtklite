@@ -56,7 +56,7 @@ OBJEXT = @OBJEXT@
 AR = @AR@
 ARFLAGS = @ARFLAGS@
 
-all: libwtkplus.a
+all: libwtklite.a
 
 # Default target is a statically linkable object library, comprising
 # the following object modules.
@@ -65,7 +65,7 @@ LIBWTK_OBJECTS = wtkbase.$(OBJEXT) wtkmain.$(OBJEXT) wndproc.$(OBJEXT) \
   dlgproc.$(OBJEXT) wtkchild.$(OBJEXT) wtkexcept.$(OBJEXT) errtext.$(OBJEXT) \
   sashctrl.$(OBJEXT) hsashctl.$(OBJEXT) vsashctl.$(OBJEXT) strres.$(OBJEXT)
 
-libwtkplus.a: $(LIBWTK_OBJECTS)
+libwtklite.a: $(LIBWTK_OBJECTS)
 	$(AR) $(ARFLAGS) $@ $^
 
 # Compilation and dependency tracking...
@@ -103,17 +103,17 @@ install: install-dirs install-headers install-libs
 install-dirs:
 	$(MKDIR_P) ${includedir} ${libdir}
 
-install-headers: wtkplus.h wtkexcept.h
+install-headers: wtklite.h wtkexcept.h
 	$(INSTALL_DATA) $^ ${includedir}
 
-install-libs: libwtkplus.a
+install-libs: libwtklite.a
 	$(INSTALL_DATA) $^ ${libdir}
 
 # Distribution rules.
 #
 TARNAME = $(PACKAGE)-$(VERSION)-mingw32
 SRCDIST_FILES = ChangeLog configure configure.ac Makefile.in install-sh \
-  wtkplus.h wtkexcept.h wtkbase.cpp wtkmain.cpp wtkchild.cpp wndproc.cpp \
+  wtklite.h wtkexcept.h wtkbase.cpp wtkmain.cpp wtkchild.cpp wndproc.cpp \
   dlgproc.cpp sashctrl.cpp wtkexcept.cpp errtext.cpp strres.cpp
 
 dist: srcdist devdist

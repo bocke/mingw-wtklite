@@ -10,7 +10,7 @@
  * $Id$
  *
  * This header file declares the exception class WTK::runtime_error.
- * It is implicitly included when including wtkplus.h, but may also be
+ * It is implicitly included when including wtklite.h, but may also be
  * explicitly included by any application which wishes to use the WTK
  * exception class, without the rest of the WTK C++ class framework.
  *
@@ -45,6 +45,13 @@
  *
  */
 #define WTKEXCEPT_H  1
+
+/* This header file is primarily intended to be used only for C++.  However,
+ * configure scripts may try to compile it as C, when checking availability;
+ * thus, we ignore C++ specific content when compiling as C, to ensure that
+ * configure doesn't choke in such cases.
+ */
+#ifdef __cplusplus
 
 #include <exception>
 
@@ -81,4 +88,5 @@ namespace WTK
   };
 }
 
+#endif /* __cplusplus */
 #endif /* ! WTKEXCEPT_H: $RCSfile$: end of file */

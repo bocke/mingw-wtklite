@@ -49,7 +49,7 @@
  */
 #define  WIN32_LEAN_AND_MEAN
 
-#include "wtkplus.h"
+#include "wtklite.h"
 
 /* Identify the class implementation to be compiled; each of
  * the HSASH_IMPLEMENTATION and VSASH_IMPLEMENTATION must be

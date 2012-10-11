@@ -40,7 +40,7 @@
  */
 #define WIN32_LEAN_AND_MEAN
 
-#include "wtkplus.h"
+#include "wtklite.h"
 #include <string.h>
 #include <stdio.h>
 

@@ -1,6 +1,6 @@
-#ifndef WTKPLUS_H
+#ifndef WTKLITE_H
 /*
- * wtkplus.h
+ * wtklite.h
  *
  * ---------------------------------------------------------------------------
  *
@@ -39,11 +39,18 @@
  * ---------------------------------------------------------------------------
  *
  */
-#define WTKPLUS_H  1
+#define WTKLITE_H  1
 
 #include <stdlib.h>
 #include <windows.h>
 #include "wtkexcept.h"
+
+/* This header file is primarily intended to be used only for C++.  However,
+ * configure scripts may try to compile it as C, when checking availability;
+ * thus, we ignore C++ specific content when compiling as C, to ensure that
+ * configure doesn't choke in such cases.
+ */
+#ifdef __cplusplus
 
 namespace WTK
 {
@@ -297,4 +304,5 @@ namespace WTK
   };
 }
 
-#endif /* ! WTKPLUS_H: $RCSfile$: end of file */
+#endif /* __cplusplus */
+#endif /* ! WTKLITE_H: $RCSfile$: end of file */

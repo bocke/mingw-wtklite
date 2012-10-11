@@ -1,3 +1,18 @@
+2012-09-11  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
+	Change package name from wtk/wtkplus to wtklite.
+
+	* configure.ac (AC_INIT): Set package name field to wtklite.
+
+	* wtkplus.h: Rename file as...
+	* wtklite.h: ...this.
+
+	* Makefile.in: Change corresponding generated library name...
+	(libwtkplus.a): ...from this...
+	(libwtklite.a): ...to this.
+
+	* all files: Update references accordingly.
+
 2012-09-05  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
 	Licence wording enhancements.
