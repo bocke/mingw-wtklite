@@ -1,3 +1,10 @@
+2013-07-12  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
+	Add default handler for WM_CLOSE message.
+
+	* wtklite.h (GenericWindow::OnClose): New inline method.
+	* wndproc.cpp (GenericWindow::OnClose): Map it to WM_CLOSE.
+
 2012-09-11  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
 	Change package name from wtk/wtkplus to wtklite.

@@ -119,6 +119,7 @@ namespace WTK
       OnEventCase( WM_VSCROLL,        OnVerticalScroll( SplitWord(w_param), (HWND)(l_param)) );
       OnEventCase( WM_PAINT,          OnPaint() );
       OnEventCase( WM_DESTROY,        OnDestroy() );
+      OnEventCase( WM_CLOSE,          OnClose() );
     }
     /* In the event that no handler is provided for any particular message,
      * fall back to MS-Windows own default handler.

@@ -122,7 +122,6 @@ namespace WTK
        */
       virtual long OnCreate(){ return 1L; }
       virtual long OnCommand( WPARAM ){ return 1L; }
-      virtual long OnDestroy(){ return 0L; }
       virtual long OnSize( WPARAM, int, int ){ return 1L; }
       virtual long OnHorizontalScroll( int, int, HWND ){ return 1L; }
       virtual long OnVerticalScroll( int, int, HWND ){ return 1L; }
@@ -131,6 +130,8 @@ namespace WTK
       virtual long OnLeftButtonDown(){ return 1L; }
       virtual long OnLeftButtonUp(){ return 1L; }
       virtual long OnMouseMove( WPARAM ){ return 1L; }
+      virtual long OnDestroy(){ return 0L; }
+      virtual long OnClose(){ return 1L; }
   };
 
   class WindowClassMaker: protected WNDCLASS, protected GenericWindow
