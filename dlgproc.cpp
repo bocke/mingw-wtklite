@@ -12,7 +12,7 @@
  * which is available to all window classes derived from GenericDialogue.
  *
  * Written by Keith Marshall <keithmarshall@users.sourceforge.net>
- * Copyright (C) 2012, MinGW.org Project.
+ * Copyright (C) 2012, 2013, MinGW.org Project.
  *
  * ---------------------------------------------------------------------------
  *
@@ -41,6 +41,7 @@
 #define WIN32_LEAN_AND_MEAN
 
 #include "wtklite.h"
+#include "wtkalign.h"
 
 namespace WTK
 {
@@ -55,9 +56,11 @@ namespace WTK
       /* We need to handle only two message types:
        */
       case WM_INITDIALOG:
-	/*
-	 * We make this a no-op, while marking it as handled.
+	/* Other than positioning this dialogue box centrally,
+	 * relative to its parent window, we make this a no-op,
+	 * while marking it as handled.
 	 */
+	AlignWindow( window, WTK_ALIGN_CENTRED );
 	return TRUE;
 
       case WM_COMMAND:

@@ -1,6 +1,6 @@
 # configure.ac
 #
-  AC_INIT([wtklite],[0.1.0],[http://mingw.org/Reporting_Bugs])
+  AC_INIT([wtklite],[0.1.1],[http://mingw.org/Reporting_Bugs])
 #
 # Implementation of a minimal C++ class framework for use with the
 # Microsoft Windows Application Programming Interface.
@@ -8,7 +8,7 @@
 # $Id$
 #
 # Written by Keith Marshall <keithmarshall@users.sourceforge.net>
-# Copyright (C) 2012, MinGW.org Project.
+# Copyright (C) 2012, 2013, MinGW.org Project.
 #
 # ---------------------------------------------------------------------------
 #
@@ -35,8 +35,9 @@
 #
   AC_PREFIX_DEFAULT([/mingw])
 
-# Identify compiler.
+# Identify compilers.
 #
+  AC_PROG_CC
   AC_PROG_CXX
 
 # Identify other tools.

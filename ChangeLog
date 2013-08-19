@@ -1,5 +1,24 @@
 2013-08-19  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
+	Add facility for control of child window placement.
+
+	* wtkalign.h: New file; it declares the API for...
+	(AlignWindow): ...this new extern "C" function; declare it.
+	* wtkalign.c: New file; implement it.
+
+	* dlgproc.cpp (GenericDialogue::Dismiss) [WM_INITDIALOG]: Use it.
+
+	* configure.ac (AC_INIT): Bump version number to 0.1.1
+	(AC_PROG_CC): Add test for C compiler.
+
+	* Makefile.in (LIBWTK_OBJECTS): Add wtkalign.$OBJEXT
+	(CC, CFLAGS): Define for compilation of C code, according to...
+	(%.$OBJEXT: %.c): ...this new build rule; define it.
+	(SRCDIST_FILES): Add wtkalign.c and wtkalign.h
+	(install-headers): Add wtkalign.h
+
+2013-08-19  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
 	Convert to one-shot C++ compilation with dependency tracking.
 
 	* Makefile.in (DEPFLAGS): Redefine; incorporate CPPFLAGS.

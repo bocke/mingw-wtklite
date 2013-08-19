@@ -44,11 +44,13 @@ exec_prefix = @exec_prefix@
 includedir = @includedir@
 libdir = @libdir@
 
-# Compiler identification; note that this is a C++ only project.
+# Compiler identification.
 #
+CC = @CC@
 CXX = @CXX@
 CPPFLAGS = @CPPFLAGS@
 CXXFLAGS = @CXXFLAGS@
+CFLAGS = @CFLAGS@
 OBJEXT = @OBJEXT@
 
 # Archive librarian identification.
@@ -64,7 +66,7 @@ all: libwtklite.a
 LIBWTK_OBJECTS = wtkbase.$(OBJEXT) wtkmain.$(OBJEXT) wndproc.$(OBJEXT) \
   dlgproc.$(OBJEXT) wtkchild.$(OBJEXT) wtkexcept.$(OBJEXT) errtext.$(OBJEXT) \
   sashctrl.$(OBJEXT) hsashctl.$(OBJEXT) vsashctl.$(OBJEXT) strres.$(OBJEXT) \
-  wtkraise.$(OBJEXT)
+  wtkraise.$(OBJEXT) wtkalign.$(OBJEXT)
 
 libwtklite.a: $(LIBWTK_OBJECTS)
 	$(AR) $(ARFLAGS) $@ $^
@@ -88,6 +90,9 @@ vsashctl.$(OBJEXT): sashctrl.cpp sashctrl.o
 
 # Other object modules may be implicitly compiled.
 #
+%.$(OBJEXT): %.c
+	$(CC) -c $(DEPFLAGS) $(CFLAGS) -o $@ $<
+
 %.$(OBJEXT): %.cpp
 	$(CXX) -c $(DEPFLAGS) $(CXXFLAGS) -o $@ $<
 
@@ -103,7 +108,7 @@ install: install-dirs install-headers install-libs
 install-dirs:
 	$(MKDIR_P) ${includedir} ${libdir}
 
-install-headers: wtklite.h wtkdefs.h wtkexcept.h
+install-headers: wtklite.h wtkdefs.h wtkalign.h wtkexcept.h
 	$(INSTALL_DATA) $^ ${includedir}
 
 install-libs: libwtklite.a
@@ -113,9 +118,9 @@ install-libs: libwtklite.a
 #
 TARNAME = $(PACKAGE)-$(VERSION)-mingw32
 SRCDIST_FILES = ChangeLog configure configure.ac Makefile.in install-sh \
-  wtklite.h wtkdefs.h wtkexcept.h wtkbase.cpp wtkmain.cpp wtkchild.cpp \
+  wtklite.h wtkdefs.h wtkalign.h wtkexcept.h wtkbase.cpp wtkmain.cpp wtkchild.cpp \
   wndproc.cpp dlgproc.cpp sashctrl.cpp wtkexcept.cpp errtext.cpp strres.cpp \
-  wtkraise.cpp
+  wtkraise.cpp wtkalign.c
 
 dist: srcdist devdist
 
