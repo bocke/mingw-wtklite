@@ -1,5 +1,11 @@
 2013-08-19  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
+	Add simplified support for changing window captions.
+
+	* wtklite.h (ChangeCaption): New static inline function; implement it.
+
+2013-08-19  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
 	Add facility for control of child window placement.
 
 	* wtkalign.h: New file; it declares the API for...

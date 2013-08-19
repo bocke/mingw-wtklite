@@ -320,6 +320,14 @@ BEGIN_NAMESPACE( WTK )
    */
   EXTERN_C int RaiseAppWindow( HINSTANCE, unsigned int );
 
+  static __inline__
+  int ChangeCaption( HWND window, const char *caption )
+  {
+    /* Helper to change the title bar caption on a specified window.
+     */
+    return SendMessage( window, WM_SETTEXT, 0, (LPARAM)(caption) );
+  }
+
 END_NAMESPACE( WTK )
 
 #endif /* ! WTKLITE_H: $RCSfile$: end of file */
