@@ -11,7 +11,7 @@ VERSION = @PACKAGE_VERSION@
 # $Id$
 #
 # Written by Keith Marshall <keithmarshall@users.sourceforge.net>
-# Copyright (C) 2012, MinGW.org Project.
+# Copyright (C) 2012, 2013, MinGW.org Project.
 #
 # ---------------------------------------------------------------------------
 #
@@ -71,7 +71,7 @@ libwtklite.a: $(LIBWTK_OBJECTS)
 
 # Compilation and dependency tracking...
 #
-DEPFLAGS = -MM -MP -MD
+DEPFLAGS = -MMD -MP $(CPPFLAGS)
 sinclude *.d
 
 # Implementations for horizontal and vertical sash bar controls are
@@ -81,16 +81,15 @@ HSASH_IMPLEMENTATION = -D HSASH_IMPLEMENTATION ${srcdir}/sashctrl.cpp
 VSASH_IMPLEMENTATION = -D VSASH_IMPLEMENTATION ${srcdir}/sashctrl.cpp
 
 hsashctl.$(OBJEXT): sashctrl.cpp sashctrl.o
-	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) -o $@ $(HSASH_IMPLEMENTATION)
+	$(CXX) -c $(DEPFLAGS) $(CXXFLAGS) -o $@ $(HSASH_IMPLEMENTATION)
 
 vsashctl.$(OBJEXT): sashctrl.cpp sashctrl.o
-	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) -o $@ $(VSASH_IMPLEMENTATION)
+	$(CXX) -c $(DEPFLAGS) $(CXXFLAGS) -o $@ $(VSASH_IMPLEMENTATION)
 
 # Other object modules may be implicitly compiled.
 #
 %.$(OBJEXT): %.cpp
-	$(CXX) $(DEPFLAGS) $(CPPFLAGS) $(CXXFLAGS) $<
-	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) -o $@ $<
+	$(CXX) -c $(DEPFLAGS) $(CXXFLAGS) -o $@ $<
 
 # Installation rules.
 #
