@@ -1,3 +1,10 @@
+2013-08-19  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
+	Do not track .orig files.
+
+	* .hgignore (**.orig): Add pattern.
+	* .gitignore (*.orig): Likewise.
+
 2013-07-12  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
 	Add default handler for WM_CLOSE message.

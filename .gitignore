@@ -1,3 +1,4 @@
+*.orig
 *.[ado]
 configure
 config.log
