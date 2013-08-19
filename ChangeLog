@@ -1,5 +1,23 @@
 2013-08-19  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
+	Add facility for activation of a running application window.
+
+	* wtkdefs.h: New file; it defines...
+	(EXTERN_C, BEGIN_NAMESPACE, END_NAMESPACE): ...these new macros.
+
+	* wtkraise.cpp: New file; it implements...
+	(RaiseAppWindow): ...this new extern "C" function.
+
+	* wtklite.h (RaiseAppWindow): Declare it; it is designated by...
+	(EXTERN_C): ...this new macro, within WTK namespace demarcated by...
+	(BEGIN_NAMESPACE, END_NAMESPACE): ...this new macro pair.
+
+	* Makefile.in (LIBWTK_OBJECTS): Add wtkraise.$OBJEXT
+	(SRCDIST_FILES): Add wtkdefs.h and wtkraise.cpp
+	(install-headers): Add wtkdefs.h
+
+2013-08-19  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
 	Do not track .orig files.
 
 	* .hgignore (**.orig): Add pattern.

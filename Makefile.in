@@ -63,7 +63,8 @@ all: libwtklite.a
 #
 LIBWTK_OBJECTS = wtkbase.$(OBJEXT) wtkmain.$(OBJEXT) wndproc.$(OBJEXT) \
   dlgproc.$(OBJEXT) wtkchild.$(OBJEXT) wtkexcept.$(OBJEXT) errtext.$(OBJEXT) \
-  sashctrl.$(OBJEXT) hsashctl.$(OBJEXT) vsashctl.$(OBJEXT) strres.$(OBJEXT)
+  sashctrl.$(OBJEXT) hsashctl.$(OBJEXT) vsashctl.$(OBJEXT) strres.$(OBJEXT) \
+  wtkraise.$(OBJEXT)
 
 libwtklite.a: $(LIBWTK_OBJECTS)
 	$(AR) $(ARFLAGS) $@ $^
@@ -103,7 +104,7 @@ install: install-dirs install-headers install-libs
 install-dirs:
 	$(MKDIR_P) ${includedir} ${libdir}
 
-install-headers: wtklite.h wtkexcept.h
+install-headers: wtklite.h wtkdefs.h wtkexcept.h
 	$(INSTALL_DATA) $^ ${includedir}
 
 install-libs: libwtklite.a
@@ -113,8 +114,9 @@ install-libs: libwtklite.a
 #
 TARNAME = $(PACKAGE)-$(VERSION)-mingw32
 SRCDIST_FILES = ChangeLog configure configure.ac Makefile.in install-sh \
-  wtklite.h wtkexcept.h wtkbase.cpp wtkmain.cpp wtkchild.cpp wndproc.cpp \
-  dlgproc.cpp sashctrl.cpp wtkexcept.cpp errtext.cpp strres.cpp
+  wtklite.h wtkdefs.h wtkexcept.h wtkbase.cpp wtkmain.cpp wtkchild.cpp \
+  wndproc.cpp dlgproc.cpp sashctrl.cpp wtkexcept.cpp errtext.cpp strres.cpp \
+  wtkraise.cpp
 
 dist: srcdist devdist
 

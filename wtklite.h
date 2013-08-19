@@ -13,7 +13,7 @@
  * C++ class framework.
  *
  * Written by Keith Marshall <keithmarshall@users.sourceforge.net>
- * Copyright (C) 2012, MinGW.org Project.
+ * Copyright (C) 2012, 2013, MinGW.org Project.
  *
  * ---------------------------------------------------------------------------
  *
@@ -44,6 +44,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include "wtkexcept.h"
+#include "wtkdefs.h"
 
 /* This header file is primarily intended to be used only for C++.  However,
  * configure scripts may try to compile it as C, when checking availability;
@@ -304,6 +305,21 @@ namespace WTK
       void SetDisplacementFactor( unsigned long );
   };
 }
-
 #endif /* __cplusplus */
+
+/* We also provide a small collection of functions which, for C++
+ * applications, are considered to live within the WTK namespace,
+ * but may also be invoked from C; to facilitate this, we reopen
+ * the namespace in a C transparent manner...
+ */
+BEGIN_NAMESPACE( WTK )
+  /*
+   * ...which allows us to declare extern "C" function prototypes,
+   * each of which will be directly visible in C, but subsumed into
+   * the namespace when compiling C++.
+   */
+  EXTERN_C int RaiseAppWindow( HINSTANCE, unsigned int );
+
+END_NAMESPACE( WTK )
+
 #endif /* ! WTKLITE_H: $RCSfile$: end of file */
