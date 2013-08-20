@@ -117,7 +117,7 @@ install-libs: libwtklite.a
 # Distribution rules.
 #
 TARNAME = $(PACKAGE)-$(VERSION)-mingw32
-SRCDIST_FILES = ChangeLog configure configure.ac Makefile.in install-sh \
+SRCDIST_FILES = README ChangeLog configure configure.ac Makefile.in install-sh \
   wtklite.h wtkdefs.h wtkalign.h wtkexcept.h wtkbase.cpp wtkmain.cpp wtkchild.cpp \
   wndproc.cpp dlgproc.cpp sashctrl.cpp wtkexcept.cpp errtext.cpp strres.cpp \
   wtkraise.cpp wtkalign.c
