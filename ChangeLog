@@ -1,5 +1,14 @@
 2013-08-20  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
+	wtklite version 0.1.2 released.
+
+	* configure.ac (AC_INIT): Set version number; regenerate configure,
+	reconfigure, rebuild, and package for source-only release; publish it.
+
+	* All tracked files (r0.1.2): Tag assigned.
+
+2013-08-20  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
 	Include README file in source distribution.
 
 	* Makefile.in (SRCDIST_FILES): Add README.
