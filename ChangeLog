@@ -1,3 +1,10 @@
+2014-04-02  Keith Marshall  <keithmarshall@users.sourceforge.net>
+
+	Consistently use local headers for package build.
+
+	* wtkraise.cpp (wtklite.h): Use quoted include, not bracketed; we
+	cannot assume it will be in a default include path, at build time.
+
 2013-08-20  Keith Marshall  <keithmarshall@users.sourceforge.net>
 
 	wtklite version 0.1.2 released.

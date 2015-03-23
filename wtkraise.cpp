@@ -13,7 +13,7 @@
  * application, and promotes any such existing instance to foreground.
  *
  * Written by Keith Marshall <keithmarshall@users.sourceforge.net>
- * Copyright (C) 2013, MinGW.org Project.
+ * Copyright (C) 2013, 2014, MinGW.org Project.
  *
  * ---------------------------------------------------------------------------
  *
@@ -39,7 +39,7 @@
  * ---------------------------------------------------------------------------
  *
  */
-#include <wtklite.h>
+#include "wtklite.h"
 
 namespace WTK
 {
