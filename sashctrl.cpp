@@ -21,7 +21,7 @@
  * derived classes, respectively.
  *
  * Written by Keith Marshall <keithmarshall@users.sourceforge.net>
- * Copyright (C) 2012, MinGW.org Project.
+ * Copyright (C) 2012, 2015, MinGW.org Project.
  *
  * ---------------------------------------------------------------------------
  *
@@ -151,6 +151,7 @@ namespace WTK
        */
       WindowObjectReference( GetParent( AppWindow ))->AdjustLayout();
     }
+    return EXIT_SUCCESS;
   }
 
   void SashWindowMaker::ValidateDisplacementFactor()
