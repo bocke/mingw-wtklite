@@ -69,5 +69,3 @@ the WTK tree.  Then, cd to the top of the WTK tree, and proceed:--
   4) ../configure
   5) make
   6) make install
-
-$RCSfile$: end of file
