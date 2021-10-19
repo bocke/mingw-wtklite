@@ -47,12 +47,12 @@ This package is delivered in source format, suitable for building in
 accordance with the standard GNU paradigm; building out-of-source, (or
 in a subdirectory of the source tree), is recommended:--
 
-   tar xf wtk-<version>-mingw32-src.tar.gz
-   mkdir wtk-<version>/build
-   cd wtk-<version>/build
-   ../configure
-   make
-   make install
+    tar xf wtk-<version>-mingw32-src.tar.gz
+    mkdir wtk-<version>/build
+    cd wtk-<version>/build
+    ../configure
+    make
+    make install
 
 
 Building from SCM Repository
