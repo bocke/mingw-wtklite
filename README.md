@@ -1,8 +1,6 @@
 README for MinGW Windows ToolKit
 ================================
 
-$Id$
-
 Written by Keith Marshall <keithmarshall@users.sourceforge.net>
 Copyright (C) 2012, MinGW.org Project
 
